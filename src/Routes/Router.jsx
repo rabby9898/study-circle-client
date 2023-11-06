@@ -1,7 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import "./index.css";
+
 import MainLayOut from "../MainLayOut/MainLayOut";
 import Home from "../Pages/Home/Home";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
+import CreateAssignment from "../Pages/CreateAssignment/CreateAssignment";
+import AllAssignment from "../Pages/AllAssignment/AllAssignment";
+import MyAssignment from "../Pages/MyAssignment/MyAssignment";
+import SubmittedAssignment from "../Pages/SubmittedAssignment/SubmittedAssignment";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +17,30 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/createAssignment",
+        element: <CreateAssignment></CreateAssignment>,
+      },
+      {
+        path: "/allAssignment",
+        element: <AllAssignment></AllAssignment>,
+      },
+      {
+        path: "/myAssignment",
+        element: <MyAssignment></MyAssignment>,
+      },
+      {
+        path: "/submittedAssignment",
+        element: <SubmittedAssignment></SubmittedAssignment>,
       },
     ],
   },
