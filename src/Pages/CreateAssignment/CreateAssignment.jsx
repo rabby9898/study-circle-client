@@ -57,12 +57,13 @@ const AddProduct = () => {
   };
   return (
     <div
-      className="px-5 py-5 md:px-10 md:py-5 lg:px-36 lg:py-10"
+      className="px-2 md:px-10 lg:px-16 py-5 md:py-10"
       style={{
         backgroundImage: backgroundImageUrl,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        height: "100%",
       }}
     >
       <div className="mx-auto text-center">
@@ -101,16 +102,9 @@ const AddProduct = () => {
             name="marks"
           />
           <label className="label">
-            <span className="label-text-lg font-semibold">Thumbnail URL</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Thumbnail URL"
-            className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full"
-            name="thumbnail"
-          />
-          <label className="label">
-            <span className="label-text-lg font-semibold">Image URL</span>
+            <span className="label-text-lg font-semibold">
+              Thumbnail Image URL
+            </span>
           </label>
           <input
             type="text"

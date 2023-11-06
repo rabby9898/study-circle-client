@@ -1,9 +1,8 @@
 const Assignment = ({ assignment }) => {
   const { imgUrl, title, marks, difficulty } = assignment;
-  console.log(assignment);
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl px-5">
+      <div className="card w-full bg-base-100 shadow-xl px-5">
         <figure>
           <img src={imgUrl} alt="Shoes" />
         </figure>
@@ -12,8 +11,12 @@ const Assignment = ({ assignment }) => {
           <p>{marks}</p>
           <p>{difficulty}</p>
           <div className="flex justify-center gap-6">
-            <button className="btn btn-primary">View Assignment</button>
-            <button className="btn btn-primary">Update Assignment</button>
+            <button className="btn bg-blue-600 text-white hover:border hover:border-blue-600 hover:text-blue-600 hover:bg-transparent">
+              View Assignment
+            </button>
+            <button className="btn bg-blue-600 text-white hover:border hover:border-blue-600 hover:text-blue-600 hover:bg-transparent">
+              Update Assignment
+            </button>
           </div>
         </div>
       </div>
