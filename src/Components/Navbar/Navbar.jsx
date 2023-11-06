@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import logo from "../../assets/Logo-removebg-preview.png";
+import { TbLogout } from "react-icons/tb";
 const Navbar = () => {
   const { user, logOut, updatedUser } = useContext(AuthContext);
   console.log(user);
@@ -24,61 +25,89 @@ const Navbar = () => {
   };
   const NavLinks = (
     <>
-      <li className="text-base text-black font-medium uppercase">
+      <li className="text-base text-black font-medium ">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
               : isActive
-              ? "text-green-700 underline bold"
+              ? "text-blue-700 underline bold"
               : ""
           }
         >
           Home
         </NavLink>
       </li>
-      <li className="text-base text-black font-medium uppercase">
-        <NavLink
-          to="/booked"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-green-700 underline" : ""
-          }
-        >
-          Booked Plan
-        </NavLink>
-      </li>
-      <li className="text-base text-black font-medium uppercase">
-        <NavLink
-          to="/about"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-green-700 underline" : ""
-          }
-        >
-          About Us
-        </NavLink>
-      </li>
-      {user && (
-        <li className="text-base text-black font-medium uppercase">
+      {!user && (
+        <li className="text-base text-black font-medium ">
           <NavLink
-            to="/profile"
+            to="/login"
             className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-green-700 underline" : ""
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
             }
           >
-            Profile
+            Login
           </NavLink>
         </li>
       )}
       {!user && (
-        <li className="text-base text-black font-medium uppercase">
+        <li className="text-base text-black font-medium ">
           <NavLink
             to="/register"
             className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-green-700 underline" : ""
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
             }
           >
             Register
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="text-base text-black font-medium ">
+          <NavLink
+            to="/createAssignment"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
+            }
+          >
+            Create Assignment
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="text-base text-black font-medium ">
+          <NavLink
+            to="/allAssignment"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
+            }
+          >
+            Assignments
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="text-base text-black font-medium ">
+          <NavLink
+            to="/myAssignment"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
+            }
+          >
+            My Assignments
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="text-base text-black font-medium ">
+          <NavLink
+            to="/submittedAssignment"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-blue-700 underline" : ""
+            }
+          >
+            Submitted Assignments
           </NavLink>
         </li>
       )}
@@ -88,7 +117,7 @@ const Navbar = () => {
     <div>
       <div
         data-aos="fade-down"
-        className="navbar px-2 md:px-10 lg:px-36 py-5 md:py-10 shadow-lg"
+        className="navbar px-2 md:px-10 lg:px-16 py-5 md:py-10 shadow-lg"
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -110,51 +139,44 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu-sm dropdown-content mt-3 z-[1] p-2 gap-10 bg-green-300"
+              className="menu-sm dropdown-content mt-3 z-[1] p-2 gap-10 bg-blue-300"
             >
               {NavLinks}
             </ul>
           </div>
-          <Link
-            to="/"
-            className="text-xl md:text-2xl font-semibold text-green-800"
-          >
-            Green Quest
+          <Link to="/">
+            <img className="w-[180px] h-[70px]" src={logo} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal px-1 gap-10">{NavLinks}</ul>
         </div>
-        <div className="navbar-end gap-2 md:gap-8">
+        <div className="navbar-end gap-2 md:gap-4">
           <div>
             {user ? (
               <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-2">
-                <p className="w-max text-sm md:text-base">{user.displayName}</p>
+                <p className="w-max text-sm md:text-base"></p>
                 <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user.photoURL || updatedUser} />
+                    <img
+                      src={user.photoURL || updatedUser}
+                      title={user.displayName}
+                    />
                   </div>
                 </label>
               </div>
             ) : (
-              <FaUserCircle className="text-3xl hover:text-green-700"></FaUserCircle>
+              <FaUserCircle className="text-3xl hover:text-blue-700"></FaUserCircle>
             )}
           </div>
 
           <div>
-            {user ? (
+            {user && (
               <Link
                 onClick={handleSignOut}
-                className="text-base text-black font-medium uppercase"
+                className="text-3xl text-black font-medium uppercase"
               >
-                Logout
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="text-base text-black font-medium uppercase"
-              >
-                Login
+                <TbLogout title="Log Out" />
               </Link>
             )}
           </div>
