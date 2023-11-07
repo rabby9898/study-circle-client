@@ -4,9 +4,8 @@ const Assignment = ({ assignment }) => {
   const { _id, imgUrl, title, marks, difficulty } = assignment;
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl ">
+      <div className="card w-full bg-base-100 shadow-xl">
         <img className="w-full" src={imgUrl} alt="Shoes" />
-
         <div className="px-9">
           <h2 className="card-title my-3 text-black text-xl font-semibold">
             {title}

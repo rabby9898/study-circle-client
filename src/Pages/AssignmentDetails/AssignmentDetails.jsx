@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 const AssignmentDetails = () => {
   const loadDetails = useLoaderData();
   const { _id, imgUrl, title, marks, description, date } = loadDetails;
-
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
