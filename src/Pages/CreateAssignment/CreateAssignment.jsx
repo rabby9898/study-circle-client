@@ -12,7 +12,7 @@ const AddProduct = () => {
     setSelectedDate(date);
   };
   const navigate = useNavigate();
-  const handleAddProduct = (e) => {
+  const handleCreateAssignment = (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -20,16 +20,14 @@ const AddProduct = () => {
     const description = form.description.value;
     const marks = form.marks.value;
     const imgUrl = form.imgUrl.value;
-    const thumbnail = form.thumbnail.value;
     const difficulty = form.difficulty.value;
     const date = form.date.value;
-    console.log(title, marks, thumbnail, imgUrl, difficulty, date, description);
+    console.log(title, marks, imgUrl, difficulty, date, description);
     const assignment = {
       imgUrl,
       title,
       marks,
       description,
-      thumbnail,
       difficulty,
       date,
     };
@@ -49,7 +47,7 @@ const AddProduct = () => {
             title: "Success!",
             text: "Your Assignment Added Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Okay",
           });
         }
         navigate("/");
@@ -73,7 +71,7 @@ const AddProduct = () => {
         </h1>
       </div>
       <div className="flex justify-center mx-auto ">
-        <form className="w-[600px]" onSubmit={handleAddProduct}>
+        <form className="w-[600px]" onSubmit={handleCreateAssignment}>
           <label className="label">
             <span className="label-text-lg font-semibold">Title</span>
           </label>
@@ -116,13 +114,15 @@ const AddProduct = () => {
           />
           <div>
             <select
-              className="text-lg bg-blue-100 border my-5 py-2 rounded-lg px-8 gap-3"
+              className="select select-bordered join-item text-lg bg-blue-100 border my-5 py-2 rounded-lg px-8 gap-3"
               name="difficulty"
             >
-              <option value="0">Difficulty Level:</option>
-              <option value="1">Easy</option>
-              <option value="2">Medium</option>
-              <option value="2">Hard</option>
+              <option disabled selected>
+                Difficulty Level:
+              </option>
+              <option>easy</option>
+              <option>medium</option>
+              <option>hard</option>
             </select>
           </div>
 

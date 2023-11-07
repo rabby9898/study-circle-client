@@ -23,7 +23,6 @@ const UpdateAssignment = () => {
     const description = form.description.value;
     const marks = form.marks.value;
     const imgUrl = form.imgUrl.value;
-    const thumbnail = form.thumbnail.value;
     const difficulty = form.difficulty.value;
     const date = form.date.value;
 
@@ -32,7 +31,6 @@ const UpdateAssignment = () => {
       title,
       marks,
       description,
-      thumbnail,
       difficulty,
       date,
     };
@@ -47,15 +45,15 @@ const UpdateAssignment = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             title: "Success!",
             text: "Your Assignment Updated Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Okay",
           });
         }
-        navigate("/");
+        navigate("/allAssignment");
       });
   };
   return (
@@ -125,12 +123,11 @@ const UpdateAssignment = () => {
             <select
               className="text-lg bg-blue-100 border my-5 py-2 rounded-lg px-8 gap-3"
               name="difficulty"
-              defaultValue={difficulty}
             >
-              <option value="0">Difficulty Level:</option>
-              <option value="1">Easy</option>
-              <option value="2">Medium</option>
-              <option value="2">Hard</option>
+              <option value="All">Difficulty Level:</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
             </select>
           </div>
 
@@ -142,7 +139,7 @@ const UpdateAssignment = () => {
                 className="input-date-picker border border-blue-400 py-2 px-6 rounded-md"
                 placeholderText="Due Date"
                 name="date"
-                defaultValue={date}
+                value={date}
               />
             </div>
           </div>
