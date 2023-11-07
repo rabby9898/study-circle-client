@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const backgroundImageUrl =
   "url(https://i.ibb.co/T21Qgcr/back-school-witch-school-supplies.jpg)";
 
-const AddProduct = () => {
+const UpdateAssignment = () => {
+  const loadAssignment = useLoaderData();
+  const { _id, imgUrl, title, marks, difficulty, description, date } =
+    loadAssignment;
   const [selectedDate, setSelectedDate] = useState(null);
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
   const navigate = useNavigate();
-  const handleAddProduct = (e) => {
+  const handleAssignment = (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -23,8 +26,8 @@ const AddProduct = () => {
     const thumbnail = form.thumbnail.value;
     const difficulty = form.difficulty.value;
     const date = form.date.value;
-    console.log(title, marks, thumbnail, imgUrl, difficulty, date, description);
-    const assignment = {
+
+    const UpdateAssignment = {
       imgUrl,
       title,
       marks,
@@ -34,12 +37,12 @@ const AddProduct = () => {
       date,
     };
 
-    fetch("http://localhost:5000/assignments", {
-      method: "POST",
+    fetch(`http://localhost:5000/assignments/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(assignment),
+      body: JSON.stringify(UpdateAssignment),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -47,7 +50,7 @@ const AddProduct = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "Your Assignment Added Successfully",
+            text: "Your Assignment Updated Successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -68,12 +71,12 @@ const AddProduct = () => {
     >
       <div className="mx-auto text-center">
         <h1 className="text-3xl text-black font-semibold">
-          Create Your{" "}
+          Update Your{" "}
           <span className="text-blue-600 font-light">Assignment</span>
         </h1>
       </div>
       <div className="flex justify-center mx-auto ">
-        <form className="w-[600px]" onSubmit={handleAddProduct}>
+        <form className="w-[600px]" onSubmit={handleAssignment}>
           <label className="label">
             <span className="label-text-lg font-semibold">Title</span>
           </label>
@@ -82,6 +85,7 @@ const AddProduct = () => {
             placeholder="Title"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full "
             name="title"
+            defaultValue={title}
           />
           <label className="label">
             <span className="label-text-lg font-semibold">Description</span>
@@ -93,6 +97,7 @@ const AddProduct = () => {
             name="description"
             cols="30"
             rows="10"
+            defaultValue={description}
           />
           <label className="label">
             <span className="label-text-lg font-semibold">Marks</span>
@@ -102,6 +107,7 @@ const AddProduct = () => {
             placeholder="Marks"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full"
             name="marks"
+            defaultValue={marks}
           />
           <label className="label">
             <span className="label-text-lg font-semibold">
@@ -113,11 +119,13 @@ const AddProduct = () => {
             placeholder="Image URL"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full"
             name="imgUrl"
+            defaultValue={imgUrl}
           />
           <div>
             <select
               className="text-lg bg-blue-100 border my-5 py-2 rounded-lg px-8 gap-3"
               name="difficulty"
+              defaultValue={difficulty}
             >
               <option value="0">Difficulty Level:</option>
               <option value="1">Easy</option>
@@ -134,13 +142,14 @@ const AddProduct = () => {
                 className="input-date-picker border border-blue-400 py-2 px-6 rounded-md"
                 placeholderText="Due Date"
                 name="date"
+                defaultValue={date}
               />
             </div>
           </div>
           <input
             type="submit"
             className="btn input-info w-full mt-8 bg-blue-600 uppercase text-white hover:bg-black hover:border hover:border-black"
-            value="Create Assignment"
+            value="Update Assignment"
           />
         </form>
       </div>
@@ -148,4 +157,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateAssignment;
