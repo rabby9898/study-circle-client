@@ -1,8 +1,42 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AssignmentDetails = () => {
   const loadDetails = useLoaderData();
+  const navigate = useNavigate();
   const { _id, imgUrl, title, marks, description, date } = loadDetails;
+
+  const handleSubmit = (e) => {
+    const form = e.target;
+    const pdfLink = form.pdfLink.value;
+    const note = form.note.value;
+
+    const submitAssignment = {
+      pdfLink,
+      note,
+    };
+    fetch("http://localhost:5000/submit", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(submitAssignment),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Your Assignment Submitted Successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+        }
+        navigate("/");
+      });
+  };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -36,7 +70,7 @@ const AssignmentDetails = () => {
                       ✕
                     </button>
                   </form>
-                  <form className="card-body">
+                  <form className="card-body" onSubmit={handleSubmit}>
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">PDF Link</span>
@@ -46,6 +80,7 @@ const AssignmentDetails = () => {
                         placeholder="Your Pdf Link"
                         className="input input-bordered hover:outline-blue-500"
                         required
+                        name="pdfLink"
                       />
                     </div>
                     <div className="form-control">
@@ -57,6 +92,7 @@ const AssignmentDetails = () => {
                         placeholder="Quick Note"
                         className="input input-bordered hover:outline-blue-500"
                         required
+                        name="note"
                       />
                     </div>
                     <input

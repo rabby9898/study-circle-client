@@ -45,7 +45,7 @@ const AddProduct = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "Your Assignment Added Successfully",
+            text: "Your Assignment Created Successfully",
             icon: "success",
             confirmButtonText: "Okay",
           });
