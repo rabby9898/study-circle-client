@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../Provider/AuthProvider";
 const backgroundImageUrl =
   "url(https://i.ibb.co/T21Qgcr/back-school-witch-school-supplies.jpg)";
 
 const AddProduct = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const { user } = useContext(AuthContext);
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -16,7 +18,7 @@ const AddProduct = () => {
   const handleCreateAssignment = (e) => {
     e.preventDefault();
     const form = e.target;
-
+    const email = user?.email;
     const title = form.title.value;
     const description = form.description.value;
     const marks = form.marks.value;
@@ -34,6 +36,7 @@ const AddProduct = () => {
       return;
     }
     const assignment = {
+      email,
       imgUrl,
       title,
       marks,

@@ -7,8 +7,8 @@ const Feature = () => {
           <span className="text-black font-semibold">Assignments</span>
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="card w-full md:w-[300px] lg:w-96 bg-base-100 shadow-xl">
           <img
             className="w-full"
             src="https://i.ibb.co/RNLBWcr/calendar.jpg"
@@ -25,11 +25,11 @@ const Feature = () => {
             <p className=" text-gray-600 text-base my-4">
               Research and write a paper on a historical event or figure
             </p>
-            <p className=" text-black capitalize">Date: 2023/10/17</p>
+            <p className=" text-black capitalize pb-8">Date: 2023/10/17</p>
           </div>
         </div>
 
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-full md:w-[300px] lg:w-96 bg-base-100 shadow-xl">
           <img
             className="w-full"
             src="https://i.ibb.co/RNLBWcr/calendar.jpg"
@@ -46,11 +46,11 @@ const Feature = () => {
             <p className=" text-gray-600 text-base my-4">
               Research and write a paper on a historical event or figure
             </p>
-            <p className=" text-black capitalize">Date: 2023/10/17</p>
+            <p className=" text-black capitalize pb-8">Date: 2023/10/17</p>
           </div>
         </div>
 
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-full md:w-[300px] lg:w-96 bg-base-100 shadow-xl mt-7">
           <img
             className="w-full"
             src="https://i.ibb.co/RNLBWcr/calendar.jpg"

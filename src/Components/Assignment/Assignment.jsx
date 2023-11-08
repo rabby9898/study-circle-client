@@ -1,7 +1,35 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Assignment = ({ assignment }) => {
+const Assignment = ({ assignment, assignments, setAssignment }) => {
   const { _id, imgUrl, title, marks, difficulty } = assignment;
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/assignments/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
+              const remaining = assignments.filter((pd) => pd._id !== _id);
+              setAssignment(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -25,6 +53,14 @@ const Assignment = ({ assignment }) => {
                 Update Assignment
               </button>
             </Link>
+          </div>
+          <div>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn bg-red-500 text-white hover:text-red-500 w-full my-4"
+            >
+              Delete Assignment
+            </button>
           </div>
         </div>
       </div>
