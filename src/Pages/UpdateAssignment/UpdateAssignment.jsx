@@ -35,7 +35,7 @@ const UpdateAssignment = () => {
       date,
     };
 
-    fetch(`http://localhost:5000/assignments/${_id}`, {
+    fetch(`https://study-circle-server.vercel.app/assignments/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

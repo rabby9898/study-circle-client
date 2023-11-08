@@ -45,7 +45,7 @@ const AddProduct = () => {
       date,
     };
 
-    fetch("http://localhost:5000/assignments", {
+    fetch("https://study-circle-server.vercel.app/assignments", {
       method: "POST",
       headers: {
         "content-type": "application/json",

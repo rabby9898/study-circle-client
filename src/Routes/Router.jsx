@@ -36,7 +36,8 @@ const router = createBrowserRouter([
       {
         path: "/allAssignment",
         element: <AllAssignment></AllAssignment>,
-        loader: () => fetch("http://localhost:5000/assignments"),
+        loader: () =>
+          fetch("https://study-circle-server.vercel.app/assignments"),
       },
       {
         path: "/myAssignment",
@@ -62,7 +63,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/assignments/${params.id}`),
+          fetch(
+            `https://study-circle-server.vercel.app/assignments/${params.id}`
+          ),
       },
       {
         path: "/updateAssignment/:id",
@@ -72,7 +75,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/assignments/${params.id}`),
+          fetch(
+            `https://study-circle-server.vercel.app/assignments/${params.id}`
+          ),
       },
     ],
   },

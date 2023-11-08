@@ -15,7 +15,7 @@ const AssignmentDetails = () => {
       pdfLink,
       note,
     };
-    fetch("http://localhost:5000/submit", {
+    fetch("https://study-circle-server.vercel.app/submit", {
       method: "POST",
       headers: {
         "content-type": "application/json",
