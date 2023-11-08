@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
 const backgroundImageUrl =
   "url(https://i.ibb.co/T21Qgcr/back-school-witch-school-supplies.jpg)";
 
@@ -23,6 +24,15 @@ const AddProduct = () => {
     const difficulty = form.difficulty.value;
     const date = form.date.value;
     console.log(title, marks, imgUrl, difficulty, date, description);
+
+    const textRegex = /^[A-Za-z\s\-.,!@#$%^&*()_+]*$/;
+    if (!textRegex.test(title)) {
+      toast.error("Title must be text");
+      return;
+    } else if (isNaN(marks)) {
+      toast.error("Marks must be a number");
+      return;
+    }
     const assignment = {
       imgUrl,
       title,
@@ -73,16 +83,21 @@ const AddProduct = () => {
       <div className="flex justify-center mx-auto ">
         <form className="w-[600px]" onSubmit={handleCreateAssignment}>
           <label className="label">
-            <span className="label-text-lg font-semibold">Title</span>
+            <span className="label-text-lg font-semibold">
+              Title <span className="text-red-500">*</span>
+            </span>
           </label>
           <input
             type="text"
             placeholder="Title"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full "
             name="title"
+            required
           />
           <label className="label">
-            <span className="label-text-lg font-semibold">Description</span>
+            <span className="label-text-lg font-semibold">
+              Description <span className="text-red-500">*</span>
+            </span>
           </label>
           <textarea
             type="text"
@@ -91,19 +106,23 @@ const AddProduct = () => {
             name="description"
             cols="30"
             rows="10"
+            required
           />
           <label className="label">
-            <span className="label-text-lg font-semibold">Marks</span>
+            <span className="label-text-lg font-semibold">
+              Marks <span className="text-red-500">*</span>
+            </span>
           </label>
           <input
             type="text"
             placeholder="Marks"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full"
             name="marks"
+            required
           />
           <label className="label">
             <span className="label-text-lg font-semibold">
-              Thumbnail Image URL
+              Thumbnail Image URL<span className="text-red-500">*</span>
             </span>
           </label>
           <input
@@ -111,6 +130,7 @@ const AddProduct = () => {
             placeholder="Image URL"
             className="input input-bordered border-blue-500 focus:outline-blue-500 focus:border-0 w-full"
             name="imgUrl"
+            required
           />
           <div>
             <select
