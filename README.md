@@ -1,6 +1,6 @@
 # Study Circle
 
-# Live Link:
+# Live Link: https://study-circle-65963.web.app/
 
 # Project Features
 
