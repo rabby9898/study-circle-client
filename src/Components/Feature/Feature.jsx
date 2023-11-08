@@ -32,19 +32,19 @@ const Feature = () => {
         <div className="card w-full md:w-[300px] lg:w-96 bg-base-100 shadow-xl">
           <img
             className="w-full"
-            src="https://i.ibb.co/RNLBWcr/calendar.jpg"
+            src="https://i.ibb.co/XFLG8w8/4.jpg"
             alt="Shoes"
           />
           <div className="px-9">
             <h2 className="card-title my-3 text-black text-xl font-semibold">
-              History Research Paper
+              Chemistry Lab Report
             </h2>
             <p className="text-black text-base my-3">Marks: 60/60</p>
             <p className="bg-blue-600 text-white py-2 px-6 capitalize text-sm rounded-md my-3 max-w-fit">
-              Hard
+              Medium
             </p>
             <p className=" text-gray-600 text-base my-4">
-              Research and write a paper on a historical event or figure
+              Write a detailed lab report based on a chemistry experiment.
             </p>
             <p className=" text-black capitalize pb-8">Date: 2023/10/17</p>
           </div>
@@ -53,19 +53,19 @@ const Feature = () => {
         <div className="card w-full md:w-[300px] lg:w-96 bg-base-100 shadow-xl mt-7">
           <img
             className="w-full"
-            src="https://i.ibb.co/RNLBWcr/calendar.jpg"
+            src="https://i.ibb.co/p08RKRB/2.jpg"
             alt="Shoes"
           />
           <div className="px-9">
             <h2 className="card-title my-3 text-black text-xl font-semibold">
-              History Research Paper
+              Economics Presentation
             </h2>
             <p className="text-black text-base my-3">Marks: 60/60</p>
             <p className="bg-blue-600 text-white py-2 px-6 capitalize text-sm rounded-md my-3 max-w-fit">
               Hard
             </p>
             <p className=" text-gray-600 text-base my-4">
-              Research and write a paper on a historical event or figure
+              Prepare and deliver a presentation on an economic topic.
             </p>
             <p className=" text-black capitalize pb-8">Date: 2023/10/17</p>
           </div>
