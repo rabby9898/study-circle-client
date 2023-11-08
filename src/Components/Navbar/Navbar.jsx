@@ -9,7 +9,7 @@ import logo from "../../assets/Logo-removebg-preview.png";
 import { TbLogout } from "react-icons/tb";
 const Navbar = () => {
   const { user, logOut, updatedUser } = useContext(AuthContext);
-  console.log(user);
+
   useEffect(() => {
     AOS.init({ duration: "2000" });
   }, []);
