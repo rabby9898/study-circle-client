@@ -1,5 +1,5 @@
 # Study Circle
-
+React-based front-end routing configuration using react-router-dom, facilitating seamless navigation and authentication for an educational platform with features such as assignment creation, tracking, and detailed assignment views.
 # Live Link: https://study-circle-65963.web.app/
 
 # Project Features
